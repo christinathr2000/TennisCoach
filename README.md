@@ -39,4 +39,4 @@ python video_demo.py --video input/<video_name>.mp4 --outdir output --save_video
 The output is stored in the ```AlphaPose/output/``` in form of an annotated video and a json file.
 
 
-For simplicity, we provide a Notebook.
+For simplicity, we provide a Notebook, which includes all the above mentioned steps.
