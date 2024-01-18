@@ -1,0 +1,115 @@
+openapi: "3.0.2"
+info:
+  title: Personal Tennis Coach API
+  version: "0.1"
+servers:
+  - url: https://api.server.test/v1
+paths:
+  /analysis:
+    summary: Add a new analysis
+    post:
+      responses:
+        "201":
+          description: Adding new analysis.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    readOnly: true
+                    description: Analysis id
+                    example: 09a40e8f-f561-4274-9337-9f148ec8ef22
+                  uploadUrl:
+                    type: string
+                    format: url
+                    description: URL for video upload
+                    example: https://some-url.com/upload/09a40e8f-f561-4274-9337-9f148ec8ef22
+                  status:
+                    type: string
+                    enum:
+                      - initial
+                      - inProgress
+                      - finished
+                      - error
+                    example: initial
+                    readOnly: true
+  /analysis/{analysisId}:
+    get:      
+      summary: Get the analysis status and download url (if finished)
+      responses:
+        "200": 
+          description: Analysis
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    readOnly: true
+                    description: Analysis id
+                    example: 09a40e8f-f561-4274-9337-9f148ec8ef22
+                  downloadUrl:
+                    type: string
+                    format: url
+                    description: URL for video download
+                    example: https://some-url.com/download/09a40e8f-f561-4274-9337-9f148ec8ef22
+                  status:
+                    type: string
+                    enum:
+                      - initial
+                      - inProgress
+                      - finished
+                      - error
+                    example: initial
+                    readOnly: true
+    put:      
+      summary: Update the analysis status
+      requestBody:
+        required: true
+        description: new status
+        content:
+          application/json:
+            schema:
+              properties:
+                status:
+                  type: string
+                  enum:
+                    - initial
+                    - inProgress
+                    - finished
+                    - error
+                  example: initial
+      responses:
+        "201": 
+          description: Updated analysis
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    readOnly: true
+                    description: Analysis id
+                    example: 09a40e8f-f561-4274-9337-9f148ec8ef22
+                  downloadUrl:
+                    type: string
+                    format: url
+                    description: URL for video download
+                    example: https://some-url.com/download/09a40e8f-f561-4274-9337-9f148ec8ef22
+                  status:
+                    type: string
+                    enum:
+                      - initial
+                      - inProgress
+                      - finished
+                      - error
+                    example: initial
+                    readOnly: true
+                  
