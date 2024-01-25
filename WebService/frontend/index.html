@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="text-center mt-5">
+        <h1>Welcome to Your Personal Tennis Coach</h1>
+        <p class="lead">Improve your tennis skills with personalized video analysis.</p>
+        <hr>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h3>Upload Video</h3>
+                <p>Submit your tennis video for analysis.</p>
+                <a class="btn btn-primary" href="{{ url_for('upload_file') }}">Upload Video</a>
+            </div>
+            <div class="col-md-6">
+                <h3>Download Video</h3>
+                <p>View and download your analyzed tennis videos.</p>
+                <a class="btn btn-success" href="{{ url_for('download') }}">Download Video</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

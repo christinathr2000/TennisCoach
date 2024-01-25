@@ -1,0 +1,13 @@
+body {
+    padding-top: 20px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.container {
+    max-width: 800px;
+}
+
+/* Add more custom styles as needed */

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>User123</h2>
+    <h3>Download Processed Videos</h3>
+    <ul class="list-group">
+        {% for file in files %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="mb-1">{{ file.key }}</h5>
+                    <small>Type: {{ file.type }}</small><br>
+                    <small>Size: {{ file.size }} KB</small>
+                </div>
+                <a class="btn btn-primary" href="{{ url_for('download_file', filename=file.key) }}">Download</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
