@@ -48,3 +48,54 @@ the performance indicator is fulfilled in one of the frames, we consider the ind
 we have an array containing error codes for all made mistakes. We use them to generate the final annotated video, where we visual highlight the 
 wrong posture and provide a textual description, what was correct and what could be improved. The final output video is again provided in the folder 
  ```AlphaPose/output/```. We provide an example output of video number 11.
+
+## Using Your Own Videos
+
+If you want to analyze your own tennis serve, you can easily do so by uploading your video to our web service and then using it in the `TennisCoach.ipynb` notebook.
+
+### Setting Up Your Environment
+
+Before you start, you'll need to set your AWS credentials to enable the upload and download of videos to and from an AWS S3 bucket. In your notebook, set your AWS Access Key ID and AWS Secret Access Key as follows:
+
+```python
+import os
+os.environ['AWS_ACCESS_KEY_ID'] = 'your_access_key_id'  # Replace with your actual access key ID
+os.environ['AWS_SECRET_ACCESS_KEY'] = 'your_secret_access_key'  # Replace with your actual secret access key
+```
+
+Additionally, ensure that the provided `.env` file is placed in the `TennisCoach/WebService/backend` directory. This file should contain the necessary environment variables for the Flask web service.
+
+### Uploading Your Video
+
+1. **Start the Local Server**: Navigate to the `WebService/backend` folder and run `app.py`. This will start a local server at `http://127.0.0.1:5000`.
+
+    ```bash
+    cd WebService/backend
+    python app.py
+    ```
+
+2. **Upload Your Video**: Open your web browser and go to `http://127.0.0.1:5000`. Use the upload tab to upload a video of your tennis serve.
+
+### Analyzing Your Video in the Notebook
+
+Once you've uploaded your video:
+
+1. **Set the Video Name**: In the `TennisCoach.ipynb` notebook, set the `video_name` variable to the name of your uploaded video. 
+
+    ```python
+    video_name = "your_uploaded_video_name.mp4"  # Replace with the name of your uploaded video
+    ```
+
+2. **Run the Analysis**: Proceed with the analysis as you would with the test videos. The notebook will download your video from S3 and analyze it.
+
+### Fallback to Default Video
+
+If there are issues with the S3 integration or you choose not to upload a video, you can still use one of the provided test videos. Simply set the `video_nr` variable to select a default video:
+
+```python
+video_nr = 11  # Replace with your desired test video number
+```
+
+Your selected video will be used for analysis, and the results will be provided in the `AlphaPose/output/` directory.
+
+---
