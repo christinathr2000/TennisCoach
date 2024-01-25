@@ -6,3 +6,7 @@ pandas
 tqdm
 matplotlib
 opencv-python
+python-magic
+numpy==1.23.0
+tensorflow==2.13.0
+super-gradients
