@@ -8,13 +8,15 @@ For the initial version of this project, we focus on one particular shot in the 
 
 
 # Execution
-Clone repository with:
+For simplicity, we provide a Notebook 'TennisCoach.ipynb', which includes all the needed steps. 
+
+First, it clones repository with:
 
 ```
 git clone https://github.com/christinathr2000/TennisCoach.git
 ```
 
-Check if all required resources are installed by executing:
+It checks if all required resources are installed by executing:
 
 ```
 pip install -r requirements.txt
@@ -27,16 +29,22 @@ Download pre-trained YOLO detector [HERE](https://drive.google.com/file/d/1D47ms
 
 Download SPPE detector [HERE](https://drive.google.com/file/d/1OPORTWB2cwd5YTVBX-NE8fsauZJWsrtW/view) and store file in folder ```AlphaPose/models/sppe/```.
 
+You may need to add the two files by hand because lately ```gdown``` has some unsolved problems.
 
-Store your desired input videos into ```AlphaPose/input/```.
+We provide 11 test videos in the folder ```AlphaPose/input/```. You can set the variable ```video_nr``` to your desired video number.
 
-Navigate to ```AlphaPose/``` and run the following command, where ```<video_name>``` is a placeholder for your individual file name:
+Following that, we navigate to ```AlphaPose/``` and run the following command, where ```<video_name>``` is a placeholder for your individual file name:
 
 ```
-python video_demo.py --video input/<video_name>.mp4 --outdir output --save_video --sp --vis_fast
+python video_demo.py --video input/<video_nr>.mp4 --outdir output --save_video --sp --vis_fast
 ```
 
-The output is stored in the ```AlphaPose/output/``` in form of an annotated video and a json file.
+The output is stored in ```AlphaPose/output/``` in form of an annotated video and a json file. The json file is used for the following key analysis.
+But, first the phase estimation for each video frame is performed by calling the ```estimate_phases()``` function from ```VideoPhaseEstimator```. It
+returns an array containing for each phase one of the following strings 'start', 'loading', 'acceleration', 'contact', 'finish' or None.
 
-
-For simplicity, we provide a Notebook, which includes all the above mentioned steps.
+Then, the key point analysis is performed. In each phase, we extract the keypoints from each corresponding frame and check the player's pose. If
+the performance indicator is fulfilled in one of the frames, we consider the indicator for the entire phase fulfilled. After the key point analysis,
+we have an array containing error codes for all made mistakes. We use them to generate the final annotated video, where we visual highlight the 
+wrong posture and provide a textual description, what was correct and what could be improved. The final output video is again provided in the folder 
+ ```AlphaPose/output/```. We provide an example output of video number 11.
