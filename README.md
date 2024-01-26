@@ -31,7 +31,7 @@ Download SPPE detector [HERE](https://drive.google.com/file/d/1OPORTWB2cwd5YTVBX
 
 You may need to add the two files by hand because lately ```gdown``` has some unsolved problems.
 
-We provide 11 test videos in the folder ```AlphaPose/input/```. You can set the variable ```video_nr``` to your desired video number.
+We provide 3 test videos in the folder ```AlphaPose/input/```. You can set the variable ```video_nr``` to your desired video number.
 
 Following that, we navigate to ```AlphaPose/``` and run the following command, where ```<video_name>``` is a placeholder for your individual file name:
 
@@ -47,8 +47,9 @@ Then, the key point analysis is performed. In each phase, we extract the keypoin
 the performance indicator is fulfilled in one of the frames, we consider the indicator for the entire phase fulfilled. After the key point analysis,
 we have an array containing error codes for all made mistakes. We use them to generate the final annotated video, where we visual highlight the 
 wrong posture and provide a textual description, what was correct and what could be improved. The final output video is again provided in the folder 
- ```AlphaPose/output/```. We provide an example output of video number 11.
-
+ ```AlphaPose/output/```. We provide an example output of video number 11. Furthermore, an annotated output video, where all performance indicators
+ are marked, is provided as well.
+ 
 ## Using Your Own Videos
 
 If you want to analyze your own tennis serve, you can easily do so by uploading your video to our web service and then using it in the `TennisCoach.ipynb` notebook.
