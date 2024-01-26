@@ -56,7 +56,7 @@ If you want to analyze your own tennis serve, you can easily do so by uploading 
 
 ### Setting Up Your Environment
 
-Before you start, you'll need to set your AWS credentials to enable the upload and download of videos to and from an AWS S3 bucket. In your notebook, set your AWS Access Key ID and AWS Secret Access Key as follows:
+Before you start, you'll need to set your AWS credentials to enable the upload and download of videos to and from an AWS S3 bucket. You can find the credentials in the env file, provided in the zip folder, which was uploaded on TeachCenter. We could not include them to the public github because of Amazon's privacy guidlines. In your notebook, set your AWS Access Key ID and AWS Secret Access Key as follows:
 
 ```python
 import os
