@@ -29,7 +29,8 @@ Download pre-trained YOLO detector [HERE](https://drive.google.com/file/d/1D47ms
 
 Download SPPE detector [HERE](https://drive.google.com/file/d/1OPORTWB2cwd5YTVBX-NE8fsauZJWsrtW/view) and store file in folder ```AlphaPose/models/sppe/```.
 
-You may need to add the two files by hand because lately ```gdown``` has some unsolved problems or you can use the files from the zipped folder submitted in the Teachcenter.
+You may need to add the two files by hand because lately ```gdown``` has some unsolved problems. We could not add the two files to the zip folder submitted in the Teachcenter
+due to the size of the data.
 
 We provide 3 test videos in the folder ```AlphaPose/input/```. You can set the variable ```video_nr``` to your desired video number.
 
